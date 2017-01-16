@@ -71,6 +71,7 @@ class D2L_Downloader():
                             downloaded[text[i].text] = 0
                             with open("downloaded.json","w") as f:
                                 json.dump(downloaded,f,indent=4)
+                            
                             caret[i].click()
                         
                             sleep(2)
@@ -80,6 +81,8 @@ class D2L_Downloader():
                                 if option.text == "Download":
                                     option.click()
                                     sleep(3)
+                                    wait.until(EC.invisibility_of_element_located((By.CLASS_NAME,config.get("Elements","content-dim"))))
+                                    
             except Exception as ex:
                 print (ex)
                 
